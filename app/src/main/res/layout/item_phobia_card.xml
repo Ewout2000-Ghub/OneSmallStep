@@ -3,38 +3,69 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:background="@android:color/white"
+    android:background="#FFFFFF"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="20dp"
     android:gravity="center"
     android:clickable="true"
     android:focusable="true"
-    android:foreground="?android:attr/selectableItemBackground">
+    android:foreground="?android:attr/selectableItemBackground"
+    android:elevation="4dp">
 
-    <ImageView
-        android:id="@+id/imagePhobiaIcon"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginBottom="8dp"
-        android:src="@android:drawable/ic_dialog_info" />
+    <!-- Icon with circular background -->
+    <FrameLayout
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="16dp">
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#EFF6FF" />
+
+        <ImageView
+            android:id="@+id/imagePhobiaIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:src="@android:drawable/ic_dialog_info"
+            android:tint="#3B82F6" />
+
+    </FrameLayout>
+
+    <!-- Phobia Name -->
     <TextView
         android:id="@+id/textPhobiaName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Phobia Name"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:textStyle="bold"
+        android:textColor="#1F2937"
         android:gravity="center"
-        android:layout_marginBottom="4dp" />
+        android:layout_marginBottom="6dp" />
 
+    <!-- Scientific Name -->
     <TextView
         android:id="@+id/textScientificName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Scientific Name"
+        android:textSize="14sp"
+        android:textColor="#6B7280"
+        android:gravity="center"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Category Badge -->
+    <TextView
+        android:id="@+id/textCategoryBadge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Common"
         android:textSize="12sp"
-        android:textColor="@android:color/darker_gray"
-        android:gravity="center" />
+        android:textColor="#065F46"
+        android:background="#D1FAE5"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="4dp" />
 
 </LinearLayout>

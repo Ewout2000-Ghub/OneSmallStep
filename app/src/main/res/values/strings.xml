@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">One Small Step</string>
+
+    <!-- Home Screen -->
+    <string name="phobia_library_title">Phobia Library</string>
+    <string name="search_phobias_hint">Search phobias...</string>
+    <string name="filter_all">All</string>
+    <string name="filter_common">Common</string>
+    <string name="filter_rare">Rare</string>
+
+    <!-- Detail Screen -->
+    <string name="exposure_levels_title">Exposure Levels</string>
+    <string name="tap_to_view_steps">Tap to view steps</string>
+    <string name="reassurance_message">This plan gradually helps you overcome %1$s at your own pace.</string>
+
+    <!-- Exposure Screen -->
+    <string name="steps_to_complete">Steps to Complete:</string>
+    <string name="complete_step">Complete Step</string>
+    <string name="mark_level_complete">Mark Level Complete</string>
+
+    <!-- Progress Screen -->
+    <string name="your_progress_title">Your Progress</string>
+    <string name="active_phobias_format">Active Phobias: %1$d</string>
+    <string name="completed_steps_format">Completed Steps: %1$d</string>
+    <string name="current_streak_format">Current Streak: %1$d days</string>
+    <string name="keep_up_work">Keep up the great work!</string>
+    <string name="recent_progress">Recent Progress</string>
+
+    <!-- Step Completion Dialog -->
+    <string name="rate_anxiety_level">Rate your anxiety level during this step:</string>
+    <string name="anxiety_level_format">Anxiety Level: %1$d/10</string>
+    <string name="optional_notes">Optional notes:</string>
+    <string name="notes_hint">How did this step go? Any observations?</string>
+    <string name="complete_button">Complete</string>
+    <string name="cancel_button">Cancel</string>
+
+    <!-- Common Actions -->
+    <string name="duration_format">Duration: %1$s</string>
+    <string name="level_format">Level %1$d: %2$s</string>
+    <string name="step_format">Step %1$d: %2$s</string>
+
+    <!-- Error Messages -->
+    <string name="error_loading_data">Error loading data. Please try again.</string>
+    <string name="no_phobias_found">No phobias found.</string>
+    <string name="phobia_not_found">Phobia not found</string>
+    <string name="network_error">Please check your connection and try again.</string>
+</resources>

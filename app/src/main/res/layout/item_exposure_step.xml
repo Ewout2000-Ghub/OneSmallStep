@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+
+        <CheckBox
+            android:id="@+id/checkboxCompleted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/textStepTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Step 1: Cartoon Spider"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textStepDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Look at a friendly cartoon spider drawing"
+        android:textSize="14sp"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/textStepInstructions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Study the image for 10 seconds"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/textStepDuration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="10 seconds - 3 times daily for 3 days"
+        android:textSize="12sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/buttonCompleteStep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Complete Step" />
+
+</LinearLayout>

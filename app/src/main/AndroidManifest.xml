@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name=".OneSmallStepApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -11,13 +10,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.OneSmallStep">
+        android:theme="@style/Theme.OneSmallStep"
+        tools:targetApi="31">
 
-        <!-- Main Activity with Compose -->
+        <!-- Main Activity - Entry point -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.OneSmallStep">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,36 +24,34 @@
             </intent-filter>
         </activity>
 
-        <!-- Home Activity - Phobia Library -->
+        <!-- Intro Activity -->
+        <activity
+            android:name=".ui.intro.IntroActivity"
+            android:exported="false"
+            android:theme="@style/Theme.OneSmallStep" />
+
+        <!-- Home Activity -->
         <activity
             android:name=".ui.home.HomeActivity"
             android:exported="false"
-            android:label="Phobia Library"
-            android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.OneSmallStep" />
 
         <!-- Phobia Detail Activity -->
         <activity
             android:name=".ui.detail.PhobiaDetailActivity"
             android:exported="false"
-            android:label="Phobia Details"
-            android:parentActivityName=".ui.home.HomeActivity"
             android:theme="@style/Theme.OneSmallStep" />
 
-        <!-- Exposure Therapy Activity -->
+        <!-- Exposure Activity -->
         <activity
             android:name=".ui.exposure.ExposureActivity"
             android:exported="false"
-            android:label="Exposure Therapy"
-            android:parentActivityName=".ui.detail.PhobiaDetailActivity"
             android:theme="@style/Theme.OneSmallStep" />
 
         <!-- Progress Activity -->
         <activity
             android:name=".ui.progress.ProgressActivity"
             android:exported="false"
-            android:label="Your Progress"
-            android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.OneSmallStep" />
 
     </application>

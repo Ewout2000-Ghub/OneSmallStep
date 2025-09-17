@@ -160,9 +160,9 @@ fun MainScreen(
                         .padding(24.dp),
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
-                    StatItem("25+", "Phobias")
-                    StatItem("4", "Levels")
-                    StatItem("Evidence", "Based")
+                    MainStatItem("25+", "Phobias")
+                    MainStatItem("4", "Levels")
+                    MainStatItem("Evidence", "Based")
                 }
             }
 
@@ -221,7 +221,7 @@ fun MainScreen(
 }
 
 @Composable
-fun StatItem(number: String, label: String) {
+fun MainStatItem(number: String, label: String) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

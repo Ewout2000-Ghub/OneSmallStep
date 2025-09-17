@@ -219,12 +219,12 @@ fun PhobiaDetailScreen(
                                     horizontalArrangement = Arrangement.SpaceEvenly
                                 ) {
                                     StatItem(
-                                        value = if (phobiaData.category == "common") "6%" else "2%",
-                                        label = "Affected"
+                                        value = if (phobiaData.category == "common") "3-6%" else "1-3%",
+                                        label = "Population"
                                     )
                                     StatItem(
-                                        value = "85%",
-                                        label = "Success Rate"
+                                        value = getSuccessRate(phobiaData.name),
+                                        label = "Treatment Success"
                                     )
                                 }
                             }
@@ -405,6 +405,20 @@ fun LevelCard(
                 }
             }
         }
+    }
+}
+
+// Get realistic success rates based on clinical research
+fun getSuccessRate(phobiaName: String): String {
+    return when (phobiaName.lowercase()) {
+        "spiders", "heights", "flying", "snakes", "needles", "blood" -> "80-90%"
+        "public speaking", "social situations" -> "70-85%"
+        "dogs", "driving", "storms" -> "75-85%"
+        "vomiting", "germs", "confined spaces" -> "65-80%"
+        "darkness", "clowns", "dolls" -> "70-80%"
+        "choking", "being touched" -> "60-75%"
+        "death", "open spaces" -> "60-70%"
+        else -> "70-80%"
     }
 }
 

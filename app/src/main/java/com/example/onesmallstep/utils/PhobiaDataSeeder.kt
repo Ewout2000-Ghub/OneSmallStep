@@ -60,7 +60,7 @@ object PhobiaDataSeeder {
         val steps = mutableListOf<ExposureStep>()
         var stepId = 1
 
-        // Detailed steps for Spider phobia (Arachnophobia)
+        // Detailed steps for Spider phobia (Arachnophobia) - Phobia ID 1, Level IDs 1-4
         steps.addAll(listOf(
             // Level 1 - Gentle Introduction
             ExposureStep(stepId++, 1, 1, "Cartoon Spider", "Look at a friendly cartoon spider drawing", "Study the image for 10 seconds without looking away", "10 seconds", "3 times daily for 3 days"),
@@ -83,34 +83,9 @@ object PhobiaDataSeeder {
             ExposureStep(stepId++, 4, 3, "Independent Comfort", "Demonstrate comfort in spider presence", "Remain calm when encountering spiders naturally", "As needed", "Ongoing maintenance")
         ))
 
-        // Vomiting phobia (Emetophobia) - Steps 13-24
-        steps.addAll(listOf(
-            // Level 1 - Gentle Introduction
-            ExposureStep(stepId++, 41, 1, "Written Word", "Read the word 'vomit' and related terms", "Read nausea-related vocabulary without distress", "1 minute", "Daily for 3 days"),
-            ExposureStep(stepId++, 41, 2, "Cartoon Images", "Look at cartoon depictions of feeling sick", "View non-graphic illustrations of nausea", "2 minutes", "Daily for 1 week"),
-            ExposureStep(stepId++, 41, 3, "Discuss Topic", "Talk about the topic with a trusted person", "Have brief conversations about stomach bugs", "5 minutes", "Every other day for 1 week"),
-
-            // Level 2 - Building Tolerance
-            ExposureStep(stepId++, 42, 1, "Movie Scenes", "Watch brief movie scenes involving stomach illness", "View carefully selected film clips", "30 seconds", "Daily for 1 week"),
-            ExposureStep(stepId++, 42, 2, "Sound Recordings", "Listen to audio of someone feeling unwell", "Play recordings of coughing or retching sounds", "15 seconds", "Daily for 1 week"),
-            ExposureStep(stepId++, 42, 3, "Medical Information", "Read about stomach viruses and food poisoning", "Study factual information about gastroenteritis", "10 minutes", "Twice weekly for 2 weeks"),
-
-            // Level 3 - Controlled Challenge
-            ExposureStep(stepId++, 43, 1, "Fake Vomit", "Look at realistic fake vomit (Halloween prop)", "Examine artificial vomit from a safe distance", "1 minute", "Daily for 1 week"),
-            ExposureStep(stepId++, 43, 2, "Hospital Visit", "Visit a hospital or clinic waiting area", "Spend time where sick people might be present", "15 minutes", "Weekly for 3 weeks"),
-            ExposureStep(stepId++, 43, 3, "Care for Sick Person", "Help care for someone with a mild stomach bug", "Provide comfort to ill family member from distance", "As needed", "When opportunity arises"),
-
-            // Level 4 - Real-World Practice
-            ExposureStep(stepId++, 44, 1, "Public Transport", "Use public transportation during flu season", "Ride buses or trains when illness is common", "Normal commute", "Weekly for 1 month"),
-            ExposureStep(stepId++, 44, 2, "Social Events", "Attend gatherings where food poisoning is possible", "Go to potlucks or buffets with confidence", "2+ hours", "Monthly"),
-            ExposureStep(stepId++, 44, 3, "Normal Eating", "Eat a varied diet without excessive precautions", "Enjoy foods without fear of stomach upset", "Regular meals", "Daily maintenance")
-        ))
-
-        // Generate basic steps for remaining phobias (simplified pattern)
-        for (phobiaId in 2..40) {
-            if (phobiaId == 11) continue // Skip emetophobia as it's already detailed above
-
-            val levelBaseId = (phobiaId - 1) * 4
+        // Generate basic steps for remaining phobias (2-25)
+        for (phobiaId in 2..25) {
+            val levelBaseId = (phobiaId - 1) * 4 // Correct level ID calculation
             for (levelNum in 1..4) {
                 val levelId = levelBaseId + levelNum
                 for (stepNum in 1..3) {

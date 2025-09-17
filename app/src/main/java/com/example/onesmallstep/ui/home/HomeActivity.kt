@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -25,6 +26,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.onesmallstep.data.database.PhobiaDatabase
@@ -57,7 +59,8 @@ class HomeActivity : ComponentActivity() {
                             putExtra("PHOBIA_ID", phobia.id)
                         }
                         startActivity(intent)
-                    }
+                    },
+                    onBackClick = { finish() }
                 )
             }
         }
@@ -68,7 +71,8 @@ class HomeActivity : ComponentActivity() {
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel,
-    onPhobiaClick: (Phobia) -> Unit
+    onPhobiaClick: (Phobia) -> Unit,
+    onBackClick: () -> Unit
 ) {
     val phobias by viewModel.phobias.observeAsState(emptyList())
     val isLoading by viewModel.isLoading.observeAsState(false)
@@ -96,13 +100,31 @@ fun HomeScreen(
                 .padding(horizontal = 16.dp)
                 .padding(top = 48.dp, bottom = 16.dp)
         ) {
-            // Logo and Title
+            // Back button and Logo/Title row
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(bottom = 16.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                // Back button
+                IconButton(
+                    onClick = onBackClick,
+                    modifier = Modifier
+                        .size(48.dp)
+                        .clip(RoundedCornerShape(12.dp))
+                        .background(Color(0xFF3730A3))
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = "Back",
+                        tint = Color.White
+                    )
+                }
+
+                Spacer(modifier = Modifier.width(12.dp))
+
+                // Logo
                 Box(
                     modifier = Modifier
                         .size(48.dp)
@@ -161,6 +183,7 @@ fun HomeScreen(
                             }
                         },
                         modifier = Modifier.fillMaxWidth(),
+                        singleLine = true,
                         decorationBox = { innerTextField ->
                             if (searchQuery.isEmpty()) {
                                 Text(
@@ -245,8 +268,8 @@ fun HomeScreen(
             } else {
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(2),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     items(phobias) { phobia ->
                         PhobiaCard(
@@ -309,6 +332,7 @@ fun PhobiaCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
+            .height(220.dp) // Fixed height for consistent card sizes
             .clickable { onClick() },
         colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
@@ -316,44 +340,51 @@ fun PhobiaCard(
     ) {
         Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(20.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .fillMaxSize()
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
             // Icon
             Box(
                 modifier = Modifier
-                    .size(80.dp)
-                    .clip(RoundedCornerShape(40.dp))
+                    .size(64.dp)
+                    .clip(RoundedCornerShape(32.dp))
                     .background(Color(0xFFEFF6FF)),
                 contentAlignment = Alignment.Center
             ) {
                 Text(
                     text = getPhobiaEmoji(phobia.iconResource),
-                    fontSize = 32.sp
+                    fontSize = 28.sp
                 )
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            // Text content with fixed spacing
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.weight(1f),
+                verticalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = phobia.name,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFF1F2937),
+                    textAlign = TextAlign.Center,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.padding(bottom = 4.dp)
+                )
 
-            Text(
-                text = phobia.name,
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color(0xFF1F2937),
-                textAlign = TextAlign.Center
-            )
-
-            Spacer(modifier = Modifier.height(6.dp))
-
-            Text(
-                text = phobia.scientificName,
-                fontSize = 14.sp,
-                color = Color(0xFF6B7280),
-                textAlign = TextAlign.Center
-            )
-
-            Spacer(modifier = Modifier.height(12.dp))
+                Text(
+                    text = phobia.scientificName,
+                    fontSize = 12.sp,
+                    color = Color(0xFF6B7280),
+                    textAlign = TextAlign.Center,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
 
             // Category Badge
             Card(
@@ -366,7 +397,8 @@ fun PhobiaCard(
                 Text(
                     text = if (phobia.category == "common") "Common" else "Specific",
                     modifier = Modifier.padding(horizontal = 12.dp, vertical = 4.dp),
-                    fontSize = 12.sp,
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Medium,
                     color = if (phobia.category == "common")
                         Color(0xFF065F46) else Color(0xFF92400E)
                 )

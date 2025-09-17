@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -17,8 +17,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -103,7 +101,7 @@ fun MainScreen(
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // OneSmallStep Logo - replace with your actual logo
+                // OneSmallStep Logo
                 Box(
                     modifier = Modifier
                         .size(140.dp)
@@ -114,7 +112,7 @@ fun MainScreen(
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        // Astronaut icon from your logo
+                        // Astronaut icon
                         Text(
                             text = "👨‍🚀",
                             fontSize = 48.sp
@@ -199,10 +197,7 @@ fun MainScreen(
                     colors = ButtonDefaults.outlinedButtonColors(
                         contentColor = Color.White
                     ),
-                    border = androidx.compose.foundation.BorderStroke(
-                        2.dp,
-                        Color.White
-                    ),
+                    border = BorderStroke(2.dp, Color.White),
                     shape = RoundedCornerShape(16.dp)
                 ) {
                     Text(
